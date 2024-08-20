@@ -1,0 +1,10 @@
+.env
+.env_*
+data
+distrib
+
+*.swo
+*.swp
+*.tmp
+*_bk
+

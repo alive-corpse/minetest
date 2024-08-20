@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  minetest:
+    container_name: minetest
+    hostname: minetest
+    build: .
+    env_file:
+      - .env # Edit this file in case of adding new games / worlds
+    ports:
+      - "${PORT}:${PORT}/udp"
+    volumes:
+      - ./data:/opt/minetest
+
+    entrypoint: ["/init.sh", "${PORT}", "${GAMEID}", "${WORLD}"]
