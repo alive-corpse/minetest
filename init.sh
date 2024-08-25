@@ -26,5 +26,9 @@ fi
 
 cd "/usr/share/minetest/worlds"
 
+[ -z "$SERVERNAME" ] && SERVERNAME="MyWorld"
+SERVERNAME="$(echo "$SERVERNAME" | sed 's#[\/\'"'"'"]##g')"
+[ -n "$dst/minetest.conf" ] && cat "$dst/minetest.conf" | sed 's/%SERVERNAME%/'"$SERVERNAME"'/g' > /etc/minetest/minetest.conf
+
 minetestserver --port "$1" --gameid "$2" --world "$3"
 
